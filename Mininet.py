@@ -54,6 +54,5 @@ class MyTopo(Topo):
         Essen_Dusseldorf = self.addLink(EssenS, DusseldorfS)
         Dortmund_Dusseldorf = self.addLink(DortmundS, DusseldorfS)
 
-
-
+        topos = {'MyTopo': (lambda: MyTopo())}
 
