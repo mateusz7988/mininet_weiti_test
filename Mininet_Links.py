@@ -1,0 +1,58 @@
+from mininet.topo import Topo
+class MyTopo(Topo):
+    def __init__(self):
+        Topo.__init__(self)
+
+        BerlinH=self.addHost('BerlinHost')
+        HamburgH=self.addHost('HamburgHost')
+        MonachiumH=self.addHost('MonachiumHost')
+        KoloniaH=self.addHost('KoloniaHost')
+        FrankfurtH=self.addHost('FrankfurtHost')
+        StuttgardH=self.addHost('StuttgardHost')
+        DusseldorfH=self.addHost('DusseldorfHost')
+        LipskH=self.addHost('LipskHost')
+        DortmundH=self.addHost('DortmundHost')
+        EssenH=self.addHost('EssenHost')
+
+        BerlinS = self.addHost('BerlinSwitch')
+        HamburgS = self.addHost('HamburgSwitch')
+        MonachiumS = self.addHost('MonachiumSwitch')
+        KoloniaS = self.addHost('KoloniaSwitch')
+        FrankfurtS = self.addHost('FrankfurtSwitch')
+        StuttgardS = self.addHost('StuttgardSwitch')
+        DusseldorfS = self.addHost('DusseldorfSwitch')
+        LipskS = self.addHost('LipskSwitch')
+        DortmundS = self.addHost('DortmundSwitch')
+        EssenS = self.addHost('EssenSwitch')
+
+        self.addLink(BerlinH, BerlinS)
+        self.addLink(HamburgH, HamburgS)
+        self.addLink(MonachiumH, MonachiumS)
+        self.addLink(KoloniaH, KoloniaS)
+        self.addLink(FrankfurtH, FrankfurtS)
+        self.addLink(StuttgardH, StuttgardS)
+        self.addLink(DusseldorfH, DusseldorfS)
+        self.addLink(LipskH, LipskS)
+        self.addLink(DortmundH, DortmundS)
+        self.addLink(EssenH, EssenS)
+
+        self.addLink(BerlinS, HamburgS)
+        self.addLink(HamburgS, KoloniaS)
+        self.addLink(HamburgS, DortmundS)
+        self.addLink(HamburgS, MonachiumS)
+        self.addLink(BerlinS, KoloniaS)
+        self.addLink(BerlinS, LipskS)
+        self.addLink(BerlinS, MonachiumS)
+        self.addLink(LipskS, FrankfurtS)
+        self.addLink(MonachiumS, StuttgardS)
+        self.addLink(MonachiumS, KoloniaS)
+        self.addLink(StuttgardS, FrankfurtS)
+        self.addLink(KoloniaS, DusseldorfS)
+        self.addLink(KoloniaS, FrankfurtS)
+        self.addLink(KoloniaS, StuttgardS)
+        self.addLink(EssenS, DortmundS)
+        self.addLink(EssenS, DusseldorfS)
+        self.addLink(DortmundS, DusseldorfS)
+
+topos = {'MyTopo': (lambda: MyTopo())}
+
