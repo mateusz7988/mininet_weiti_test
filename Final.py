@@ -1,3 +1,4 @@
+import mininet.link
 from mininet.topo import Topo
 class MyTopo(Topo):
     def __init__(self):
@@ -36,15 +37,16 @@ class MyTopo(Topo):
         self.addLink(DortmundH, DortmundS)
         self.addLink(EssenH, EssenS)
 
-        self.addLink(BerlinS, HamburgS)
-        self.addLink(HamburgS, DortmundS)
-        self.addLink(DortmundS, EssenS)
-        self.addLink(BerlinS, KoloniaS)
-        self.addLink(KoloniaS, DusseldorfS)
-        self.addLink(KoloniaS, StuttgardS)
-        self.addLink(BerlinS, MonachiumS)
-        self.addLink(MonachiumS, FrankfurtS)
-        self.addLink(FrankfurtS, LipskS)
+        self.addLink(BerlinS, HamburgS, cls=mininet.link.TCLink, bw=10, delay='1.405ms')
+        self.addLink(HamburgS, DortmundS, cls=mininet.link.TCLink, bw=10, delay='1.6ms')
+        self.addLink(DortmundS, EssenS, cls=mininet.link.TCLink, bw=10, delay='0.174ms')
+        self.addLink(BerlinS, KoloniaS, cls=mininet.link.TCLink, bw=10, delay='2.69ms')
+        self.addLink(KoloniaS, DusseldorfS, cls=mininet.link.TCLink, bw=10, delay='0.1895ms')
+        self.addLink(KoloniaS, StuttgardS, cls=mininet.link.TCLink, bw=10, delay='1.65ms')
+        self.addLink(BerlinS, MonachiumS, cls=mininet.link.TCLink, bw=10, delay='2.84ms')
+        self.addLink(MonachiumS, FrankfurtS, cls=mininet.link.TCLink, bw=10, delay='1.73ms')
+        self.addLink(FrankfurtS, LipskS, cls=mininet.link.TCLink, bw=10, delay='1.66ms')
+
 
 topos = {'MyTopo': (lambda: MyTopo())}
 
