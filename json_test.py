@@ -15,7 +15,7 @@ if __name__ == '__main__':
         print('Do you want to edit deviceID? y/n ')
         ans=input()
         if ans == 'y':
-            print('Give new deviceID')
+            print('Give new deviceID: ')
             try:
                 switch_id = int(input())
                 if switch_id == 10:
