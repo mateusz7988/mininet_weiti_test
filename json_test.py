@@ -16,7 +16,16 @@ if __name__ == '__main__':
         ans=input()
         if ans == 'y':
             print('Give new deviceID')
-            ID = f"of:000000000000000{input()}"
+            try:
+                switch_id = int(input())
+                if switch_id == 10:
+                    ID = f"of:00000000000000{switch_id}"
+                elif switch_id < 10:
+                    ID = f"of:000000000000000{switch_id}"
+                else:
+                    print('There is no device with that ID!')
+            except:
+                print('deviceID must be Integer!')
             with open(file, 'r') as f:
                 data = json.load(f)
                 data['deviceId'] = ID
