@@ -6,9 +6,9 @@ import os, json, uuid
 
 if __name__ == '__main__':
 
-    print('Give filename:')
+    print('Give path to file without extension:')
     nazwa = input()
-    file = f"D:\\Jsony\\{nazwa}.json"
+    file = f"{nazwa}.json"
 
 
     def changeSwitch():
