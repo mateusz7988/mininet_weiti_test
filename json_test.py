@@ -1,4 +1,4 @@
-import os, json, uuid
+import os, json, uuid, requests
 
 
 
@@ -9,7 +9,8 @@ if __name__ == '__main__':
     print('Give path to file without extension:')
     nazwa = input()
     file = f"{nazwa}.json"
-
+    global ID
+    global json_file
 
     def changeSwitch():
         print('Do you want to edit deviceID? y/n ')
@@ -35,6 +36,7 @@ if __name__ == '__main__':
             with open(tempfile, 'w') as f:
                 json.dump(data, f, indent=4)
                 f.close()
+                tempfile = json_file
                 os.rename(tempfile, file)
         elif ans == 'n':
             None
@@ -63,7 +65,9 @@ if __name__ == '__main__':
                 with open(tempfile, 'w') as f:
                     json.dump(data, f, indent=4)
                     f.close()
+                    tempfile = json_file
                     os.rename(tempfile, file)
+
         elif ans == 'n':
             None
         else:
@@ -90,6 +94,7 @@ if __name__ == '__main__':
                 with open(tempfile, 'w') as f:
                     json.dump(data, f, indent=4)
                     f.close()
+                    tempfile = json_file
                     os.rename(tempfile, file)
         elif ans == 'n':
             None
@@ -102,3 +107,6 @@ if __name__ == '__main__':
     changeSwitch()
     changeInPort()
     changeOutput()
+    print(ID)
+    url = f"http://192.168.1.102:8181/onos/v1/flows/{ID}"
+    requests.post(url, json=json_file, auth=('karaf', 'karaf'), headers={"Content-Type": "application/json", "Accept": "application/json"})
